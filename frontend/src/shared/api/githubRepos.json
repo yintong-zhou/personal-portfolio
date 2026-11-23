@@ -26,26 +26,6 @@
     "archived": false
   },
   {
-    "name": "notify-flow",
-    "full_name": "yintong-zhou/notify-flow",
-    "description": "Email Sender API, deploy in your Free Cloudflare Accont to user like a service",
-    "language": "TypeScript",
-    "topics": [
-      "automation",
-      "cloudflare",
-      "cloudflare-workers",
-      "email",
-      "email-automation",
-      "email-sender",
-      "email-templates"
-    ],
-    "html_url": "https://github.com/yintong-zhou/notify-flow",
-    "homepage": "notify-flow-docs.pages.dev",
-    "logo": null,
-    "fork": false,
-    "archived": false
-  },
-  {
     "name": "personal-portfolio",
     "full_name": "yintong-zhou/personal-portfolio",
     "description": "Personal portfolio",
@@ -69,6 +49,26 @@
     "html_url": "https://github.com/yintong-zhou/personal-portfolio",
     "homepage": "https://personal-portfolio.jjservice.workers.dev/",
     "logo": "/project-logos/personal-portfolio.png",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "notify-flow",
+    "full_name": "yintong-zhou/notify-flow",
+    "description": "Email Sender API, deploy in your Free Cloudflare Accont to user like a service",
+    "language": "TypeScript",
+    "topics": [
+      "automation",
+      "cloudflare",
+      "cloudflare-workers",
+      "email",
+      "email-automation",
+      "email-sender",
+      "email-templates"
+    ],
+    "html_url": "https://github.com/yintong-zhou/notify-flow",
+    "homepage": "notify-flow-docs.pages.dev",
+    "logo": null,
     "fork": false,
     "archived": false
   },
