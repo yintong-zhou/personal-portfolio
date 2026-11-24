@@ -13,16 +13,8 @@
 .diagram img {
   flex: none;
   max-width: 100%;
-  height: 24px;
-  object-fit: contain;
-}
-
-.backend img {
   height: 28px;
-}
-
-.diagram .oracle {
-  height: 12px;
+  object-fit: contain;
 }
 
 .backend,
@@ -128,13 +120,12 @@
     display: block;
   }
 
-  /* Tighter rows on desktop: the section (title, diagram, numbers) has to fit one 900px screen. */
   .target {
     padding-block: 4px;
   }
 
   .tool {
-    min-height: 56px;
+    min-height: 64px;
   }
 
   .servicesTitle {

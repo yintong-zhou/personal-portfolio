@@ -1,0 +1,39 @@
+.experience-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-background);
+}
+
+.experience-marker::before,
+.experience-marker::after {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+}
+
+.experience-marker::before {
+  inset: 1px;
+  background: conic-gradient(var(--color-accent), var(--color-background), var(--color-accent), var(--color-foreground), var(--color-accent));
+  animation: experience-orbit 4s linear infinite paused;
+}
+
+.experience-marker::after {
+  inset: 4px;
+  background: var(--color-foreground);
+  border: 1px solid var(--color-background);
+}
+
+.experience-marker.is-visible::before {
+  animation-play-state: running;
+}
+
+@keyframes experience-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-marker::before {
+    animation: none;
+  }
+}

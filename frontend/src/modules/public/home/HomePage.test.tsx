@@ -14,7 +14,7 @@ it('shows the title, subtitle and the two actions', async () => {
   expect(screen.getByRole('link', { name: 'Read my CV' })).toHaveAttribute('href', '/about#experience')
 })
 
-it('explains the stack with readable tool names before the numbers', () => {
+it('explains the stack with readable tool names and five brand marks', () => {
   vi.spyOn(publicApi, 'getProjects').mockResolvedValue([])
   renderRoute('/')
   const heading = screen.getByRole('heading', { level: 2, name: texts.home.stackTitle })
@@ -33,7 +33,7 @@ it('explains the stack with readable tool names before the numbers', () => {
   }
   expect(within(diagram).getByRole('heading', { name: 'Data', level: 3 })).toBeVisible()
   expect(within(diagram).getByRole('heading', { name: 'External services', level: 3 })).toBeVisible()
-  expect(diagram.querySelectorAll('img[alt=""], svg[aria-hidden="true"]').length).toBeGreaterThanOrEqual(6)
+  expect(diagram.querySelectorAll('img[alt=""]')).toHaveLength(5)
   expect(heading.compareDocumentPosition(diagram) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
 
@@ -72,8 +72,7 @@ it('hides the preview section when no project is published', async () => {
 it('invites the visitor to get in touch by email', () => {
   vi.spyOn(publicApi, 'getProjects').mockResolvedValue([])
   renderRoute('/')
-  expect(screen.getAllByRole('heading', { name: texts.closing.title })).toHaveLength(1)
-  expect(screen.getByRole('main')).not.toHaveTextContent(texts.closing.title)
+  expect(within(screen.getByRole('main')).queryByRole('link', { name: texts.closing.action })).toBeNull()
   expect(screen.getByRole('link', { name: texts.closing.action })).toHaveAttribute(
     'href',
     'mailto:contactdm.yt@gmail.com',

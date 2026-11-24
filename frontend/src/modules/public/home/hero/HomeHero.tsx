@@ -1,4 +1,5 @@
 import { Component, useEffect, useState, type ReactNode } from 'react'
+import { Container } from '../../../../shared/components/Container'
 import { reducedMotionQuery } from '../../../../shared/motion'
 import { HeroCopy } from './HeroCopy'
 import { heroMode, shortViewportQuery } from './heroMode'
@@ -9,9 +10,11 @@ function StaticHero() {
   return (
     <section
       data-hero="static"
-      className="-mt-(--header-height) min-h-svh bg-card px-(--gut) pb-16 pt-[calc(var(--header-height)+64px)] md:pb-24 md:pt-[calc(var(--header-height)+96px)]"
+      className="hero-stage -mt-(--header-height) min-h-svh bg-background"
     >
-      <HeroCopy />
+      <Container>
+        <HeroCopy />
+      </Container>
     </section>
   )
 }

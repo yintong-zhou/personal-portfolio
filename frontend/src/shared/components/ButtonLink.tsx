@@ -14,7 +14,7 @@ export function ButtonLink({
   className?: string
 }) {
   return (
-    <Link to={to} className={`${buttonClass(variant)} ${className}`}>
+    <Link to={to} viewTransition className={`${buttonClass(variant)} ${className}`}>
       {children}
     </Link>
   )

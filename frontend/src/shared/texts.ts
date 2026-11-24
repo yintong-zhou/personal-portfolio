@@ -22,9 +22,8 @@ export const texts = {
     previewAll: 'See all projects',
   },
   closing: {
-    title: 'Write to me',
     line: "I'm based in Milan.",
-    action: 'Email me',
+    action: 'Write to me',
   },
   projects: {
     title: 'Projects',
@@ -71,7 +70,6 @@ export const texts = {
   footer: {
     github: 'GitHub',
     linkedin: 'LinkedIn',
-    email: 'Email',
     trademarks: 'Product names and logos are trademarks of their owners.',
   },
   notFound: { title: 'Page not found', back: 'Back to home' },

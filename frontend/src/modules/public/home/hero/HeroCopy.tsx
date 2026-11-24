@@ -1,10 +1,7 @@
-import { ArrowRight, FileText } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { motion, type MotionStyle } from 'motion/react'
 import { ButtonLink } from '../../../../shared/components/ButtonLink'
 import { texts } from '../../../../shared/texts'
-
-// .NET is the point of the title: it gets the jade glass chip.
-const [lead, tail] = texts.home.title.split('.NET')
 
 // What the owner does: title, subtitle and the two actions. Who the owner is lives on the About page.
 export function HeroCopy({
@@ -13,22 +10,19 @@ export function HeroCopy({
   styles?: { title?: MotionStyle; subtitle?: MotionStyle; actions?: MotionStyle }
 }) {
   return (
-    <div className="mx-auto max-w-[1280px] text-center">
-      <motion.h1 className="type-display mx-auto max-w-[24ch] text-balance" style={styles.title}>
-        {lead}
-        <span className="hero-net">.NET</span>
-        {tail}
+    <div className="max-sm:text-center">
+      <motion.h1 className="type-display max-w-[24ch] max-sm:mx-auto" style={styles.title}>
+        {texts.home.title}
       </motion.h1>
-      <motion.p className="type-body-lg mx-auto mt-6 max-w-[62ch] text-muted-foreground" style={styles.subtitle}>
+      <motion.p className="type-body-lg mt-6 max-w-[62ch] text-pretty text-muted-foreground max-sm:mx-auto" style={styles.subtitle}>
         {texts.home.subtitle}
       </motion.p>
-      <motion.div className="mt-8 flex flex-wrap justify-center gap-4" style={styles.actions}>
+      <motion.div className="mt-8 flex flex-wrap gap-3 max-sm:justify-center sm:gap-4" style={styles.actions}>
         <ButtonLink to="/projects" variant="main">
           {texts.home.seeProjects}
-          <ArrowRight aria-hidden="true" size={20} strokeWidth={1.75} className="glass-arrow" />
+          <ArrowRight aria-hidden="true" size={20} strokeWidth={1.5} className="glass-arrow shrink-0" />
         </ButtonLink>
         <ButtonLink to="/about#experience" variant="secondary">
-          <FileText aria-hidden="true" size={20} strokeWidth={1.5} />
           {texts.home.readCv}
         </ButtonLink>
       </motion.div>

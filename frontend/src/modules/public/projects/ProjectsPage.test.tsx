@@ -9,6 +9,7 @@ it('lists the published projects', async () => {
   vi.spyOn(publicApi, 'getProjects').mockResolvedValue([full, bare])
   renderRoute('/projects')
   expect(await screen.findAllByRole('article')).toHaveLength(2)
+  expect(screen.getByRole('heading', { level: 2, name: full.title })).toBeInTheDocument()
 })
 
 it('opens every project directly on GitHub', async () => {

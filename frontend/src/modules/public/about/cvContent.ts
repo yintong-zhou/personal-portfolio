@@ -11,7 +11,6 @@ export interface CvEntry {
 
 export const cvContent = {
   role: 'Software Developer - Fullstack .NET (C#, ASP.NET MVC)',
-  location: 'Milan, Italy',
   linkedinLabel: 'linkedin.com/in/yintong-zhou',
   summary:
     'Fullstack Software Developer with 8+ years of experience building and maintaining enterprise web applications on the Microsoft .NET stack. Day-to-day stack: C#, ASP.NET MVC, ASP.NET Web API, Entity Framework, Oracle PL/SQL and SQL Server, plus HTML, CSS, JavaScript, jQuery and Bootstrap on the frontend. Built REST API integrations with Salesforce, ServiceNow and Google APIs.',

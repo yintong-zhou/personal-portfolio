@@ -36,7 +36,7 @@ it('offers a skip link to the main content as the first link', () => {
 it('shows identity and public links in the footer', () => {
   renderRoute('/')
   const footer = screen.getByRole('contentinfo')
-  expect(within(footer).getByRole('heading', { level: 3, name: texts.owner.name })).toBeInTheDocument()
+  expect(within(footer).getByText(texts.owner.name, { exact: true })).toBeInTheDocument()
   expect(footer).toHaveTextContent(`${texts.owner.role} · ${texts.owner.location}`)
   expect(within(footer).getByRole('link', { name: 'GitHub' })).toHaveAttribute(
     'href',
@@ -46,20 +46,16 @@ it('shows identity and public links in the footer', () => {
     'href',
     'https://www.linkedin.com/in/yintong-zhou',
   )
-  expect(within(footer).getByRole('link', { name: 'Email' })).toHaveAttribute('href', 'mailto:contactdm.yt@gmail.com')
 })
 
 it.each(['/', '/about', '/cv', '/projects', '/nope'])('closes %s with one email action and the legal line', (path) => {
   renderRoute(path)
   const footer = screen.getByRole('contentinfo')
   expect(footer).toHaveAttribute('id', 'contact')
-  expect(screen.getAllByRole('heading', { name: texts.closing.title })).toHaveLength(1)
-  expect(within(footer).getByRole('heading', { level: 2, name: texts.closing.title })).toBeInTheDocument()
   expect(within(footer).getByText(texts.closing.line)).toBeInTheDocument()
-  expect(within(footer).getByRole('link', { name: texts.closing.action })).toHaveAttribute(
-    'href',
-    'mailto:contactdm.yt@gmail.com',
-  )
+  const emailLinks = within(footer).getAllByRole('link').filter((link) => link.getAttribute('href')?.startsWith('mailto:'))
+  expect(emailLinks).toEqual([within(footer).getByRole('link', { name: 'Write to me' })])
+  expect(emailLinks[0]).toHaveAttribute('href', 'mailto:contactdm.yt@gmail.com')
   expect(footer).toHaveTextContent(`© ${new Date().getFullYear()} ${texts.owner.name}`)
   expect(footer).toHaveTextContent(texts.footer.trademarks)
 })

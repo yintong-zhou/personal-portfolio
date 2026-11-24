@@ -1,3 +1,8 @@
+/* Kept out of route crossfades: the same header sits on both pages. */
+.header {
+  view-transition-name: site-header;
+}
+
 .island {
   gap: 0.5rem;
   padding-inline: 0.5rem;
@@ -23,6 +28,14 @@
   transition-delay: 0s, 0s, 600ms;
 }
 
+@media (width < 390px) {
+  .island {
+    gap: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
 @media (min-width: 48rem) {
   .island {
     gap: 1.5rem;
@@ -45,6 +58,15 @@
   background: none;
   box-shadow: none;
   font-weight: 500;
+}
+
+/* The active pill: a glass tint behind the label, sliding between links (Motion layoutId). */
+.pill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--glass-tint);
 }
 
 @media (prefers-reduced-motion: reduce) {

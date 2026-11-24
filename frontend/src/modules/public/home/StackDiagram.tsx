@@ -1,4 +1,3 @@
-import externalApi from '../../../assets/icons/external-api.png'
 import { useEffect, useRef } from 'react'
 import dotnet from '../../../assets/icons/dotnet.svg'
 import javascript from '../../../assets/icons/javascript.svg'
@@ -8,10 +7,10 @@ import postgresql from '../../../assets/icons/postgresql.svg'
 import { texts } from '../../../shared/texts'
 import styles from './StackDiagram.module.css'
 
-const dataLogos: Record<string, { src: string; width: number; height: number; className?: string }> = {
-  Oracle: { src: oracle, width: 92, height: 12, className: styles.oracle },
-  'SQL Server': { src: sqlServer, width: 24, height: 24 },
-  PostgreSQL: { src: postgresql, width: 24, height: 24 },
+const dataLogos: Record<string, string> = {
+  Oracle: oracle,
+  'SQL Server': sqlServer,
+  PostgreSQL: postgresql,
 }
 
 export function StackDiagram() {
@@ -37,17 +36,17 @@ export function StackDiagram() {
         <div className={styles.node}>
           <img src={javascript} alt="" width={28} height={28} />
           <div>
-            <p className="type-h3">{texts.home.stack.frontEnd.label}</p>
+            <h3 className="type-h3">{texts.home.stack.frontEnd.label}</h3>
             <p className="type-body mt-2 text-muted-foreground">{texts.home.stack.frontEnd.detail}</p>
           </div>
         </div>
       </div>
-      <div className={`${styles.backend} rounded-md bg-card p-6 ring-1 ring-accent`}>
+      <div className={`${styles.backend} rounded-md bg-card p-6`}>
         <span className={styles.connection} aria-hidden="true" />
         <div className={styles.node}>
           <img src={dotnet} alt="" width={28} height={28} />
           <div>
-            <p className="type-h3">{texts.home.stack.backend.label}</p>
+            <h3 className="type-h3">{texts.home.stack.backend.label}</h3>
             <p className="type-body mt-2 text-muted-foreground">{texts.home.stack.backend.detail}</p>
           </div>
         </div>
@@ -65,7 +64,7 @@ export function StackDiagram() {
                 <span className={styles.connection} />
               </span>
               <div className={`${styles.tool} rounded-md bg-card p-4`}>
-                <img {...dataLogos[name]} alt="" />
+                {dataLogos[name] && <img src={dataLogos[name]} alt="" width={28} height={28} />}
                 <span className="type-body">{name}</span>
               </div>
             </li>
@@ -86,7 +85,6 @@ export function StackDiagram() {
                 <span className={styles.connection} />
               </span>
               <div className={`${styles.tool} rounded-md bg-card p-4`}>
-                <img src={externalApi} alt="" width={28} height={28} />
                 <span className="type-body">{name}</span>
               </div>
             </li>

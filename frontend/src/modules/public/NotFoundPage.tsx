@@ -4,12 +4,14 @@ import { texts } from '../../shared/texts'
 
 export function NotFoundPage() {
   return (
-    <Container className="pt-8 pb-12 sm:pt-14 sm:pb-18">
+    <Container className="page-pad">
       <title>{`${texts.notFound.title} · ${texts.owner.name}`}</title>
       <h1 className="type-h1 enter">{texts.notFound.title}</h1>
-      <ButtonLink to="/" variant="secondary" className="mt-8">
-        {texts.notFound.back}
-      </ButtonLink>
+      <div className="enter mt-8 [--enter-i:1]">
+        <ButtonLink to="/" variant="secondary">
+          {texts.notFound.back}
+        </ButtonLink>
+      </div>
     </Container>
   )
 }

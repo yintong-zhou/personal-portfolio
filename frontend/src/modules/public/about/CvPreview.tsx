@@ -11,7 +11,7 @@ function CvSheetEntry({ title, org, date, bullets }: CvEntry) {
     <div className="cv-sheet-entry">
       <p className="cv-sheet-entry-title">
         <strong>{title}</strong>
-        <span className="cv-sheet-entry-date">{date}</span>
+        <span className="cv-sheet-entry-date type-label">{date}</span>
       </p>
       <p className="cv-sheet-entry-org">{org}</p>
       {!!bullets?.length && (
@@ -48,13 +48,13 @@ function CvSheet() {
   return (
     <article className="cv-sheet">
       <header className="cv-sheet-header">
-        <h2>{texts.owner.name}</h2>
+        <h2 className="type-h1">{texts.owner.name}</h2>
         <p className="cv-sheet-role">{cvContent.role}</p>
-        <p className="cv-sheet-contacts flex flex-wrap justify-center">
+        <p className="cv-sheet-contacts type-small flex flex-wrap">
           <span>
             <button
               type="button"
-              className="cv-sheet-email"
+              className="link min-h-11 text-left"
               aria-label={sheet.copyEmail(site.email)}
               onClick={copyEmail}
             >
@@ -64,18 +64,18 @@ function CvSheet() {
               {copied ? sheet.copied : ''}
             </span>
           </span>
-          <span>{cvContent.location}</span>
-          <a href={site.linkedinUrl} target="_blank" rel="noopener noreferrer">
+          <span>{texts.owner.location}</span>
+          <a href={site.linkedinUrl} target="_blank" rel="noopener noreferrer" className="link inline-flex min-h-11 items-center">
             {cvContent.linkedinLabel}
           </a>
         </p>
       </header>
       <section>
-        <h3>{sheet.headings.summary}</h3>
+        <h3 className="type-h3">{sheet.headings.summary}</h3>
         <p>{cvContent.summary}</p>
       </section>
       <section>
-        <h3>{sheet.headings.skills}</h3>
+        <h3 className="type-h3">{sheet.headings.skills}</h3>
         <ul>
           {cvContent.skills.map(({ label, value }) => (
             <li key={label}>
@@ -90,7 +90,7 @@ function CvSheet() {
         { heading: sheet.headings.education, entries: cvContent.education },
       ].map(({ heading, entries }) => (
         <section key={heading}>
-          <h3>{heading}</h3>
+          <h3 className="type-h3">{heading}</h3>
           {entries.map((entry) => (
             <CvSheetEntry key={entry.title} {...entry} />
           ))}
@@ -101,7 +101,7 @@ function CvSheet() {
         { heading: sheet.headings.languages, items: cvContent.languages },
       ].map(({ heading, items }) => (
         <section key={heading}>
-          <h3>{heading}</h3>
+          <h3 className="type-h3">{heading}</h3>
           <ul>
             {items.map((item) => (
               <li key={item}>{item}</li>
@@ -150,8 +150,8 @@ export function CvPreview() {
               {texts.cv.sheet.title}
             </h2>
             <div className="ml-auto flex items-center gap-2">
-              <a href={site.cvPdfUrl} download="Yintong_Zhou_CV.pdf" className={buttonClass('main')}>
-                <Download size={20} strokeWidth={1.5} aria-hidden="true" />
+              <a href={site.cvPdfUrl} download="Yintong_Zhou_CV.pdf" className={`${buttonClass('main')} max-sm:px-3 max-sm:text-sm`}>
+                <Download size={20} strokeWidth={1.5} aria-hidden="true" className="shrink-0" />
                 {texts.cv.download}
               </a>
               <button

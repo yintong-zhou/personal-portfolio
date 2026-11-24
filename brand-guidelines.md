@@ -13,7 +13,7 @@ Rules that follow from it:
 
 - Content first. Every page reads well with animations and images switched off.
 - One accent colour, jade. Everything else is near-black, white and grey. Real third-party logos keep their own colours.
-- One section, one idea. A Home section fills one screen; the hero is alone on the first screen.
+- One section, one idea. The hero fills the first screen. The stack and project sections size to their content.
 - Equal edges: every block starts and ends on the container lines or on a grid column.
 - Avoid: generic templates, stock illustrations, emoji as icons, cards that fade in while scrolling, two calls to action competing in one view.
 - The Home hero sequence (see "Motion") is the one large scene on the site. Everything around it stays quiet.
@@ -112,7 +112,8 @@ Both are open source (SIL Open Font License) and self-hosted through `@fontsourc
 - **Container:** `width: min(100% - 2 * gutter, 1280px)`, centred. Gutter 24px on a phone, 48px from 640px, 80px from 1024px. The header island, every section and the footer share it.
 - **Grid:** 12 columns with a 24px gutter (12px on a phone).
 - **Two text lines:** the left container line and the split line at column 5. Every split on the site uses this pair: label, date or action on the left four columns, content on the right eight. Never mirrored, never alternating. Under 1024px a split stacks, label first.
-- **Sections:** top padding 120px (96 on a phone), bottom padding 72px (48). The section title is the first content, top-aligned; content is never centred vertically. Home sections are at least one screen tall (`min-height: 100svh`).
+- **Sections:** top padding 120px (96 on a phone), bottom padding 72px (48) by default. Section titles sit first, aligned to the top. The Home hero copy is centred vertically beneath the navigation. The stack and project sections use 32–64px of vertical padding.
+- **Compact spacing on phones:** About leaves 64px between the introduction, Experience and the closing action. Experience entries use 24px vertical padding, with 16px above their lists and skill chips. The shared closing group uses 64px above and 32px below.
 - **Separation** between sections is space or a change of ground, never a rule or a shadow. One muted band per page at most. A list may close each row with a 1px rule.
 - **Breakpoints to test:** 390, 768, 1024, 1440px. Mobile first, no horizontal scroll at 320px.
 - **Private area:** same tokens, denser. 32–48px between blocks, 16px between form fields, tables with 12px cell padding.
@@ -123,7 +124,7 @@ Both are open source (SIL Open Font License) and self-hosted through `@fontsourc
 ## Components
 
 - **Buttons.** Fully round, at least 44px high, label weight 500. Main: jade glass, white label, optional trailing arrow. Secondary: translucent white glass, jade-deep label. One main button per view. Hover: the button rises 1px and brightens; press: it scales to 0.98. Destructive (private area only): destructive background, always behind a confirmation.
-- **Closing action.** Once per page, in the footer: a main button as wide as the container, 72–96px high, with an H3-size label.
+- **Closing action.** A single compact main button labelled “Write to me” sits at the start of the footer beside the location, wrapping when space is limited.
 - **Links.** Accent colour. In running text they are underlined; standalone links draw their underline on hover.
 - **Navigation island.** Glass, fully round, centred, sticky. The active item is jade.
 - **Tiles (projects).** A flat tile on the opposite ground (muted on white, white on muted), `--radius-lg`, 8px padding around a 16:9 cover with `--radius-md`, then title, summary and chips. The whole tile is one link. Hover: the tile rises 2px and the cover zooms to 1.03 inside its frame.
@@ -144,7 +145,7 @@ Both are open source (SIL Open Font License) and self-hosted through `@fontsourc
 
 ## Motion
 
-Motion answers the pointer and explains where content comes from. Three places move: the Home hero sequence, the head of a page as it loads, and controls under the pointer. Nothing fades in because the page scrolled.
+Motion answers the pointer and helps readers follow the content. The Home hero carries the main sequence. Page heads can enter on load, controls respond to input, and About highlights each experience as its title first enters the viewport. Content stays visible while scrolling.
 
 **Which tool for what**
 
@@ -152,10 +153,16 @@ Motion answers the pointer and explains where content comes from. Three places m
 |---|---|
 | Hover, press and focus feedback | CSS transitions |
 | Page head entrance on load | CSS animation |
+| Project tiles on load (Projects page) | CSS animation (`enter`, staggered) |
+| Route change | View Transitions API through React Router `viewTransition`: the page crossfades and rises, the header stays |
+| Active navigation item | Motion (`layoutId`): a glass pill glides to the new item |
+| Sheen on the main button, spotlight on a project tile | CSS (`glass-sheen`, `tile-hover::before`); the spotlight follows the pointer through `--spot-x` and `--spot-y` |
 | Pulses on the stack diagram | CSS animation |
 | Home hero sequence: scroll progress | Motion (`useScroll`) |
 | Home hero sequence: stars, black hole, tunnel | Two decorative canvases, loaded only on the Home: an instanced WebGL scene, and the MIT-licensed dgreenheck TSL raymarcher using WebGPURenderer with its WebGL fallback |
 | Count-up of the three numbers, when they enter the viewport | AnimeJS |
+| About Experience: settle the role title and trace the date | Motion (`inView` and `animate`) for the title, Anime.js for the decorative line |
+| About Experience: highlight the career path as the reader scrolls | Motion (`useScroll`) |
 
 One element is animated by one tool only.
 
@@ -172,10 +179,12 @@ One element is animated by one tool only.
 **Rules**
 
 - Animate `opacity` and `transform` only (the diagram pulse may animate `background-position` or `offset-distance`). Never anything that moves the layout.
-- **Page head entrance:** on every page except the Home, the title, the lead and the actions rise 12px and fade in once on load, 80ms apart. Nothing else enters.
-- **Hover layer:** a linked tile rises 2px and its cover zooms to 1.03; a button rises 1px and presses to 0.98; a standalone link draws its underline; the main button's arrow leans 3px forward.
+- **Page head entrance:** on every page except the Home, the title, the lead and the actions rise 12px and fade in once on load, 80ms apart.
+- **Hover layer:** a linked tile rises 2px and its cover zooms to 1.03, with a soft light that follows the mouse; a button rises 1px and presses to 0.98, and the main button's glass takes a light sheen; a standalone link draws its underline; the main button's arrow leans 3px forward.
+- **Route change:** the page (not the header) fades out in 200ms and the next page rises 12px while it fades in over 500ms. Links that change the page use `viewTransition`.
+- **Owner's expanded motion (2026-11-24):** the owner asked for more expressive motion than the rules above allowed. The route change, the gliding navigation pill, the project tile entrance and the pointer-following light are the additions. They keep the same limits: transform and opacity only, no content hidden until scrolled, and the reduced-motion rules below.
 - **Diagram pulses** cycle in 2.5–4s and run only while the diagram is on screen.
-- No scroll-triggered fade-ins, no parallax, no scroll snapping, no route transitions. Scroll-linked motion exists only in the Home hero sequence.
+- No scroll-triggered content fades, parallax or scroll snapping. Scroll progress drives the Home hero and the jade line connecting the dates in About Experience. Each Experience title settles once on entry and a short jade line briefly underlines its date.
 - Animations never block input. One exception: the Home hero text takes no pointer events until its buttons are at least half visible. While keyboard focus is inside the hero text, the hero shows its final state.
 - Do not split DOM text into letters.
 - The count-up runs once, uses tabular figures so the width does not jump, and ends on the exact value written in `PROFILE.md`.
@@ -203,6 +212,7 @@ When the system asks for reduced motion, the site shows the final state at once:
 - Motion: wrap the application in `<MotionConfig reducedMotion="user">`.
 - AnimeJS: do not start the timeline when `matchMedia("(prefers-reduced-motion: reduce)").matches` is true.
 - CSS: `@media (prefers-reduced-motion: reduce)` removes animations and transitions on transform.
+- View Transitions: the route change is instant under reduced motion (`::view-transition-*` animations set to `none`). The pill jumps to its new item, and the pointer spotlight stays centred.
 
 ## Voice
 

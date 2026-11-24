@@ -43,11 +43,10 @@ The Home says what the owner does; who the owner is belongs on the About page. T
 - Stack diagram: Frontend (JavaScript) → Backend (C#, ASP.NET MVC, Web API) → Data (Oracle, SQL Server) and External services (Salesforce, ServiceNow, Google APIs)
 - Projects button: See all projects
 
-**Closing (every page, above the footer)**
+**Closing (every page, in the footer)**
 
-- Heading: Write to me
+- Button: Write to me
 - Line: I'm based in Milan.
-- Button: Email me
 
 **About**
 
@@ -67,4 +66,3 @@ Yintong Zhou · Fullstack .NET Software Developer · Milan
 
 - GitHub: github.com/yintong-zhou
 - LinkedIn: linkedin.com/in/yintong-zhou
-- Email: contactdm.yt@gmail.com

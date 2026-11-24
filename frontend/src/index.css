@@ -5,17 +5,15 @@ html:has(dialog.cv-dialog[open]) {
 }
 
 .cv-dialog {
-  width: min(100% - 2rem, 920px);
+  width: min(100% - 2 * var(--gut), 896px);
   max-height: calc(100dvh - 2rem);
   margin: auto;
   padding: 0;
   overflow: hidden;
-  border: 1px solid var(--glass-edge);
-  border-radius: 28px;
-  background: var(--glass-fill);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
   color: var(--color-foreground);
-  backdrop-filter: blur(var(--glass-blur));
-  box-shadow: var(--glass-rim), var(--glass-shadow);
 }
 
 .cv-dialog[open] {
@@ -23,32 +21,29 @@ html:has(dialog.cv-dialog[open]) {
   flex-direction: column;
   opacity: 1;
   translate: 0 0;
-  scale: 1;
   transition:
-    opacity var(--motion-fast),
-    translate var(--motion-fast),
-    scale var(--motion-fast);
+    opacity var(--motion-fast) var(--ease-out),
+    translate var(--motion-fast) var(--ease-out);
 }
 
 @starting-style {
   .cv-dialog[open] {
     opacity: 0;
     translate: 0 8px;
-    scale: 0.98;
   }
 }
 
 .cv-dialog::backdrop {
   background: color-mix(in srgb, var(--color-foreground) 40%, transparent);
-  backdrop-filter: blur(10px);
 }
 
 .cv-toolbar {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cv-close {
@@ -65,74 +60,27 @@ html:has(dialog.cv-dialog[open]) {
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: var(--color-muted);
   padding: 32px;
 }
 
 .cv-sheet {
-  max-width: 794px;
-  margin: 0 auto;
-  padding: 48px 56px;
-  border-radius: 4px;
-  background: var(--color-card);
-  color: var(--color-foreground);
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-foreground) 12%, transparent);
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.cv-sheet-header {
-  text-align: center;
-}
-
-.cv-sheet h2 {
-  color: var(--color-accent);
-  font-size: 32px;
-  font-weight: 700;
+  max-width: 62ch;
+  margin-inline: auto;
 }
 
 .cv-sheet-role {
-  margin-top: 4px;
-  font-size: 15px;
-  font-weight: 500;
+  margin-top: 8px;
 }
 
 .cv-sheet-contacts {
-  column-gap: 24px;
-  row-gap: 4px;
-  margin-top: 12px;
-  padding: 8px 0;
-  border-block: 1px solid var(--color-border);
-  font-size: 12.5px;
-}
-
-.cv-sheet a,
-.cv-sheet a:hover,
-.cv-sheet-email,
-.cv-sheet-email:hover {
-  color: var(--color-foreground);
-  text-decoration: none;
-  opacity: 1;
-}
-
-.cv-sheet-email {
-  padding: 0;
-  border: none;
-  background: none;
-  font: inherit;
-  line-height: inherit;
-}
-
-.cv-sheet a:focus-visible,
-.cv-sheet-email:focus-visible {
-  outline: 2px solid var(--color-ring);
-  outline-offset: 3px;
+  gap: 0 16px;
+  margin-top: 8px;
+  align-items: center;
 }
 
 .cv-sheet-copied {
-  margin-left: 6px;
+  margin-left: 8px;
   color: var(--color-muted-foreground);
-  font-size: 11px;
 }
 
 .cv-sheet-copied:empty {
@@ -140,31 +88,26 @@ html:has(dialog.cv-dialog[open]) {
 }
 
 .cv-sheet section {
-  margin-top: 22px;
+  margin-top: 24px;
 }
 
 .cv-sheet h3 {
-  margin-bottom: 10px;
-  padding-bottom: 4px;
-  border-bottom: 1.5px solid var(--color-accent);
-  color: var(--glass-jade-deep);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cv-sheet strong {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .cv-sheet ul {
   list-style: disc;
-  padding-left: 18px;
+  padding-left: 16px;
 }
 
 .cv-sheet li {
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .cv-sheet li:first-child {
@@ -172,18 +115,19 @@ html:has(dialog.cv-dialog[open]) {
 }
 
 .cv-sheet li::marker {
-  color: var(--color-accent);
+  color: var(--color-muted-foreground);
 }
 
 .cv-sheet-entry + .cv-sheet-entry {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .cv-sheet-entry-title {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 4px 16px;
 }
 
 .cv-sheet-entry-date {
@@ -193,31 +137,26 @@ html:has(dialog.cv-dialog[open]) {
 }
 
 .cv-sheet-entry-org {
-  margin-top: 2px;
+  margin-top: 4px;
   color: var(--color-muted-foreground);
 }
 
 .cv-sheet-entry ul {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 @media (width < 640px) {
   .cv-dialog {
-    width: calc(100% - 1rem);
     max-height: calc(100dvh - 1rem);
   }
 
+  .cv-toolbar {
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
   .cv-viewport {
-    padding: 12px;
-  }
-
-  .cv-sheet {
-    padding: 24px;
-  }
-
-  .cv-sheet-entry-title {
-    flex-wrap: wrap;
-    row-gap: 2px;
+    padding: 16px;
   }
 }
 
@@ -271,6 +210,24 @@ html:has(dialog.cv-dialog[open]) {
 
   .cv-sheet {
     print-color-adjust: exact;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .cv-sheet h2 {
+    font-size: 32px;
+  }
+
+  .cv-sheet h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+  }
+
+  .cv-sheet :is(a, button) {
+    min-height: 0;
+    color: inherit;
+    text-decoration: none;
   }
 
   .cv-sheet h3,
@@ -387,6 +344,10 @@ html:has(dialog.cv-dialog[open]) {
   line-height: 1.05;
   letter-spacing: -0.045em;
   text-wrap: balance;
+
+  @media (width < 390px) {
+    font-size: clamp(32px, calc(4.571429px + 8.571429vw), 38px);
+  }
 }
 
 @utility type-h1 {
@@ -454,6 +415,30 @@ html:has(dialog.cv-dialog[open]) {
   padding-block: var(--padt) var(--padb);
 }
 
+@utility hero-stage {
+  display: grid;
+  align-content: safe center;
+  padding-block: calc(var(--header-height) + 24px) 24px;
+}
+
+@utility page-pad {
+  padding-block: calc(var(--padt) - var(--header-height)) var(--padb);
+}
+
+@utility editorial-split {
+  display: grid;
+  gap: 12px;
+
+  @media (width >= 640px) {
+    gap: 24px;
+  }
+
+  @media (width >= 1024px) {
+    /* Four and eight columns, excluding the gap between them. */
+    grid-template-columns: calc((100% - 48px) / 3) minmax(0, 1fr);
+  }
+}
+
 @utility glass-main {
   color: var(--color-on-accent);
   background: var(--glass-jade-fill);
@@ -474,7 +459,7 @@ html:has(dialog.cv-dialog[open]) {
 @utility glass-secondary {
   color: var(--glass-jade-deep);
   background: var(--glass-fill);
-  border: 1px solid var(--glass-edge);
+  border: 1px solid var(--color-border-strong);
   box-shadow: var(--glass-rim), var(--glass-shadow);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
   backdrop-filter: blur(var(--glass-blur)) saturate(140%);
@@ -497,6 +482,35 @@ html:has(dialog.cv-dialog[open]) {
   }
 }
 
+/* Main action: a light sheen crosses the glass on hover. It sits behind the label, so the text never washes out. */
+@utility glass-sheen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      color-mix(in srgb, var(--color-card) 34%, transparent) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 700ms var(--ease-out);
+  }
+  &:hover::before {
+    transform: translateX(100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      display: none;
+    }
+  }
+}
+
 /* Trailing arrow on the main action: still, it leans forward on hover. */
 @utility glass-arrow {
   transition: transform var(--motion-fast) var(--ease-out);
@@ -511,80 +525,12 @@ html:has(dialog.cv-dialog[open]) {
   }
 }
 
-/* Home title: the ".NET" glyphs themselves are jade glass: a jade gradient fill clipped to the text,
-   a translucent white rim, a soft jade glow and a light sweep through the letters.
-   The top of the fill stays at least 3.7:1 on white (large bold text needs 3:1). */
-@utility hero-net {
-  display: inline-block;
-  white-space: nowrap;
-  color: var(--color-accent);
-  filter: drop-shadow(0 2px 8px color-mix(in srgb, var(--glass-jade-light) 55%, transparent));
-
-  @supports (background-clip: text) or (-webkit-background-clip: text) {
-    background-image:
-      linear-gradient(
-        105deg,
-        transparent 40%,
-        color-mix(in srgb, var(--color-card) 80%, transparent) 50%,
-        transparent 60%
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--glass-jade-light) 35%, var(--glass-jade)) 0%,
-        var(--glass-jade) 45%,
-        var(--glass-jade-deep) 100%
-      );
-    background-size:
-      250% 100%,
-      100% 100%;
-    background-position:
-      100% 0,
-      0 0;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px color-mix(in srgb, var(--color-card) 55%, transparent);
-    animation: hero-net-sweep 3.2s var(--ease-out) infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-}
-
-/* Background-position on a single word: paint only, no layout. */
-@keyframes hero-net-sweep {
-  0%,
-  35% {
-    background-position:
-      100% 0,
-      0 0;
-  }
-  75%,
-  100% {
-    background-position:
-      0% 0,
-      0 0;
-  }
-}
-
 @utility link {
   color: var(--color-accent);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  transition: background-size var(--motion-fast) var(--ease-out);
   &:hover,
   &:focus-visible {
-    background-size: 100% 1px;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    background-image: none;
     text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: none;
+    text-underline-offset: 4px;
   }
 }
 
@@ -595,12 +541,31 @@ html:has(dialog.cv-dialog[open]) {
 }
 
 @utility tile-hover {
+  /* The spotlight follows the pointer (set from ProjectCard); it rests at the centre otherwise. */
+  --spot-x: 50%;
+  --spot-y: 50%;
+  position: relative;
+  isolation: isolate;
   transition: transform var(--motion-fast) var(--ease-out);
   & [data-cover] {
     transition: transform var(--motion-fast) var(--ease-out);
   }
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle 320px at var(--spot-x) var(--spot-y), var(--glass-tint), transparent);
+    opacity: 0;
+    transition: opacity var(--motion-fast) var(--ease-out);
+  }
   &:hover {
     transform: translateY(-2px);
+  }
+  &:hover::before {
+    opacity: 1;
   }
   &:hover [data-cover] {
     transform: scale(1.03);
@@ -617,8 +582,11 @@ html:has(dialog.cv-dialog[open]) {
 }
 
 @utility enter {
-  animation: enter var(--motion-reveal) var(--ease-out) both;
+  animation: enter var(--motion-reveal) var(--ease-out) backwards;
   animation-delay: calc(var(--enter-i, 0) * 80ms);
+  &:focus-within {
+    animation: none;
+  }
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
@@ -635,126 +603,38 @@ html:has(dialog.cv-dialog[open]) {
   }
 }
 
-/* About: the static log is the fallback; only the spine, dots and content move. */
-.career-log {
-  --career-spine: 6px;
-  position: relative;
+/* Route changes: the header (named site-header in Header.module.css) stays in place; the rest of the page crossfades and rises (View Transitions, React Router viewTransition). */
+::view-transition-old(root) {
+  animation: page-leave var(--motion-fast) var(--ease-out) both;
 }
-.career-log::before,
-.career-log::after {
-  content: '';
-  position: absolute;
-  top: 2.5rem;
-  bottom: 2.5rem;
-  left: var(--career-spine);
-  width: 2px;
-  background: var(--color-accent);
-  transform-origin: top;
-  pointer-events: none;
+::view-transition-new(root) {
+  animation: page-enter var(--motion-reveal) var(--ease-out-expo) both;
 }
-.career-log::before {
-  opacity: 0.15;
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
 }
-.career-entry {
-  position: relative;
-  display: grid;
-  gap: 1.5rem;
-  padding: 2rem 0 3rem 2rem;
-}
-.career-node {
-  position: absolute;
-  top: 2.25rem;
-  left: calc(var(--career-spine) - 4px);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 5px var(--color-background);
-}
-.career-content {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-border);
-}
-.career-changes > li {
-  position: relative;
-  padding-left: 1.5rem;
-}
-.career-changes > li::before {
-  content: '+' / '';
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-}
-@media (width >= 1024px) {
-  .career-log {
-    --career-spine: calc((100% - 3rem) / 3 + 1.5rem);
-  }
-  .career-entry {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    column-gap: 3rem;
-    padding-left: 0;
-  }
-  .career-date-tag {
-    position: sticky;
-    top: calc(var(--header-height) + 2rem);
-  }
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .career-log {
-      view-timeline-name: --career-log;
-    }
-    .career-log::after {
-      animation: career-spine linear both;
-      animation-timeline: --career-log;
-      /* Finish when the list's bottom enters the viewport, including short last entries. */
-      animation-range: entry 20% exit 0%;
-    }
-    .career-entry {
-      view-timeline-name: --career-entry;
-    }
-    .career-node {
-      animation: career-node var(--ease-out) both;
-      animation-timeline: --career-entry;
-      animation-range: entry 0% entry 70%;
-    }
-    .career-content {
-      animation: career-settle var(--ease-out) both;
-      animation-timeline: --career-entry;
-      animation-range: entry 0% entry 70%;
-    }
-    .career-entry[data-scroll-settled] > .career-node,
-    .career-entry[data-scroll-settled] > .career-content {
-      animation: none;
-    }
-  }
-}
-
-@keyframes career-spine {
-  from {
-    transform: scaleY(0);
-  }
+@keyframes page-leave {
   to {
-    transform: scaleY(1);
+    opacity: 0;
   }
 }
-@keyframes career-node {
+@keyframes page-enter {
   from {
-    transform: scale(0.55);
-    opacity: 0.4;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
+    opacity: 0;
+    transform: translateY(12px);
   }
 }
-@keyframes career-settle {
-  from {
-    transform: translateY(8px);
-  }
-  to {
-    transform: translateY(0);
+/* Named parts have higher specificity than (*), so they are listed here as well. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) {
+    animation: none;
   }
 }
 

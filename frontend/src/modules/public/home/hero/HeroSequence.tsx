@@ -1,6 +1,7 @@
 import { ChevronDown } from 'lucide-react'
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from 'motion/react'
 import { useEffect, useEffectEvent, useRef, useState, type FocusEvent } from 'react'
+import { Container } from '../../../../shared/components/Container'
 import { texts } from '../../../../shared/texts'
 import type { HeroScene } from './heroScene'
 import { supportsWebGL } from './heroMode'
@@ -189,7 +190,7 @@ export function HeroSequence({ onFail }: { onFail: () => void }) {
       data-revealed={revealed}
       className="relative -mt-(--header-height) h-[400svh] bg-card"
     >
-      <div ref={stageRef} className="sticky top-0 h-svh overflow-hidden">
+      <div ref={stageRef} className="hero-stage sticky top-0 h-svh overflow-hidden">
         <canvas
           ref={holeCanvasRef}
           data-hero-fx
@@ -210,17 +211,19 @@ export function HeroSequence({ onFail }: { onFail: () => void }) {
           onFocus={onFocus}
           onBlur={onBlur}
           style={{ pointerEvents: 'none' }}
-          className="absolute inset-x-0 top-1/2 -translate-y-1/2 px-4 md:px-6 lg:px-8"
+          className="relative"
         >
-          <HeroCopy styles={styles} />
+          <Container>
+            <HeroCopy styles={styles} />
+          </Container>
         </div>
         <motion.div
           aria-hidden="true"
           style={{ opacity: hint }}
-          className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-muted-foreground"
+          className="absolute inset-x-(--gut) bottom-6 flex flex-col items-center gap-1 text-center text-muted-foreground"
         >
           <span className="type-label">{texts.home.scrollHint}</span>
-          <ChevronDown size={20} />
+          <ChevronDown size={20} strokeWidth={1.5} />
         </motion.div>
       </div>
     </section>

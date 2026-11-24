@@ -13,22 +13,21 @@ export function HomePage() {
     <>
       <title>{`${texts.owner.name} · ${texts.owner.role}`}</title>
       <HomeHero />
-      <section className="section-pad min-h-svh bg-background">
+      <section className="bg-background py-8 sm:pb-12">
         <Container>
           <h2 className="type-h2">{texts.home.stackTitle}</h2>
-          <div className="mt-12">
+          <div className="mt-6 sm:mt-8">
             <StackDiagram />
           </div>
-
         </Container>
       </section>
 
       {projects.length > 0 && (
-        <section className="section-pad min-h-svh bg-muted">
+        <section className="bg-muted py-12 sm:py-16">
           <Container>
-            <h2 className="type-h2 mb-12">{texts.home.previewTitle}</h2>
+            <h2 className="type-h2 mb-8 sm:mb-12">{texts.home.previewTitle}</h2>
             <ProjectGrid projects={projects.slice(0, 3)} tone="card" />
-            <ButtonLink to="/projects" variant="secondary" className="mt-12">
+            <ButtonLink to="/projects" variant="secondary" className="mt-8 sm:mt-12">
               {texts.home.previewAll}
             </ButtonLink>
           </Container>

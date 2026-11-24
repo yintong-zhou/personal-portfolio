@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { expect, it } from 'vitest'
 import type { Project } from '../../../shared/api/types'
 import { bare, full } from '../../../test/fixtures'
@@ -9,7 +9,7 @@ const renderCard = (project: Project, props: { tone?: 'muted' | 'card' } = {}) =
 
 it('always links to the repository even when a website exists', () => {
   renderCard(full)
-  const links = screen.getAllByRole('link')
+  const links = screen.getAllByRole('link', { name: `${full.title} (opens in a new tab)` })
   expect(links).toHaveLength(1)
   expect(links[0]).toHaveAttribute('href', full.repoUrl)
   expect(links[0]).toHaveAttribute('target', '_blank')
@@ -39,6 +39,12 @@ it('keeps the title block, hidden from assistive technology, when there is no lo
   expect(document.querySelector('img')).toBeNull()
   const fallback = document.querySelector('[data-cover] > [aria-hidden="true"]')
   expect(fallback).toHaveTextContent(full.title)
+})
+
+it('uses the same title block if the logo fails to load', () => {
+  renderCard(full)
+  fireEvent.error(document.querySelector('img')!)
+  expect(document.querySelector('[data-cover] > [aria-hidden="true"]')).toHaveTextContent(full.title)
 })
 
 it('uses a white tile when placed on the muted ground', () => {

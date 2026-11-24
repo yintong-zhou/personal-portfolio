@@ -1,30 +1,28 @@
-import { ArrowRight, Code2, UserRound, Mail } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { buttonClass } from '../../shared/components/buttonStyles'
 import { Container } from '../../shared/components/Container'
 import { site } from '../../shared/site'
 import { texts } from '../../shared/texts'
 
 const links = [
-  { href: site.githubUrl, label: texts.footer.github, Icon: Code2 },
-  { href: site.linkedinUrl, label: texts.footer.linkedin, Icon: UserRound },
-  { href: `mailto:${site.email}`, label: texts.footer.email, Icon: Mail },
+  { href: site.githubUrl, label: texts.footer.github },
+  { href: site.linkedinUrl, label: texts.footer.linkedin },
 ]
 
 export function Footer() {
   return (
     <footer id="contact" className="bg-background">
       <Container>
-        <div className="section-pad">
-          <h2 className="type-h1">{texts.closing.title}</h2>
-          <p className="type-body-lg mt-4 text-muted-foreground">{texts.closing.line}</p>
-          <a href={`mailto:${site.email}`} className={`${buttonClass('main')} mt-12`}>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-16 pb-8">
+          <a href={`mailto:${site.email}`} className={buttonClass('main')}>
             {texts.closing.action}
-            <ArrowRight aria-hidden="true" size={24} strokeWidth={1.5} className="glass-arrow shrink-0" />
+            <ArrowRight aria-hidden="true" size={20} strokeWidth={1.5} className="glass-arrow shrink-0" />
           </a>
+          <p className="type-body text-muted-foreground">{texts.closing.line}</p>
         </div>
-        <div className="mt-12 flex flex-col gap-6 pb-12 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 pb-12 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6">
           <div>
-            <h3 className="type-h3">{texts.owner.name}</h3>
+            <p className="font-medium">{texts.owner.name}</p>
             <p className="type-small mt-2 text-muted-foreground">
               {texts.owner.role} · {texts.owner.location}
             </p>
@@ -32,8 +30,7 @@ export function Footer() {
           <ul className="flex flex-wrap gap-4">
             {links.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="link inline-flex min-h-11 min-w-11 items-center gap-2">
-                  <l.Icon aria-hidden="true" size={18} />
+                <a href={l.href} className="link inline-flex min-h-11 min-w-11 items-center">
                   {l.label}
                 </a>
               </li>
