@@ -1,5 +1,28 @@
 [
   {
+    "name": "ark",
+    "full_name": "yintong-zhou/ark",
+    "description": "Ark - Where agents work together.",
+    "language": "TypeScript",
+    "topics": [
+      "agents",
+      "agents-skills",
+      "agentskills",
+      "ai",
+      "claude",
+      "claude-code",
+      "codex",
+      "orchestrator",
+      "skills",
+      "skills-management"
+    ],
+    "html_url": "https://github.com/yintong-zhou/ark",
+    "homepage": "",
+    "logo": "/project-logos/ark.ico",
+    "fork": false,
+    "archived": false
+  },
+  {
     "name": "getstead",
     "full_name": "yintong-zhou/getstead",
     "description": "Stead - your money, steady",
@@ -69,29 +92,6 @@
     "html_url": "https://github.com/yintong-zhou/notify-flow",
     "homepage": "notify-flow-docs.pages.dev",
     "logo": null,
-    "fork": false,
-    "archived": false
-  },
-  {
-    "name": "ark",
-    "full_name": "yintong-zhou/ark",
-    "description": "Ark - Where coding agents work together.",
-    "language": "TypeScript",
-    "topics": [
-      "agents",
-      "agents-skills",
-      "agentskills",
-      "ai",
-      "claude",
-      "claude-code",
-      "codex",
-      "orchestrator",
-      "skills",
-      "skills-management"
-    ],
-    "html_url": "https://github.com/yintong-zhou/ark",
-    "homepage": "",
-    "logo": "/project-logos/ark.ico",
     "fork": false,
     "archived": false
   },
