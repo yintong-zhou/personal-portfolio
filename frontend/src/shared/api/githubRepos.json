@@ -1,28 +1,5 @@
 [
   {
-    "name": "ark",
-    "full_name": "yintong-zhou/ark",
-    "description": "Ark - Where agents work together.",
-    "language": "TypeScript",
-    "topics": [
-      "agents",
-      "agents-skills",
-      "agentskills",
-      "ai",
-      "claude",
-      "claude-code",
-      "codex",
-      "orchestrator",
-      "skills",
-      "skills-management"
-    ],
-    "html_url": "https://github.com/yintong-zhou/ark",
-    "homepage": "",
-    "logo": "/project-logos/ark.ico",
-    "fork": false,
-    "archived": false
-  },
-  {
     "name": "getstead",
     "full_name": "yintong-zhou/getstead",
     "description": "Stead - your money, steady",
@@ -45,6 +22,48 @@
     "html_url": "https://github.com/yintong-zhou/getstead",
     "homepage": "https://getstead-finance.vercel.app",
     "logo": "/project-logos/getstead.png",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "ark",
+    "full_name": "yintong-zhou/ark",
+    "description": "Ark - Where agents work together.",
+    "language": "TypeScript",
+    "topics": [
+      "agents",
+      "agents-skills",
+      "agentskills",
+      "ai",
+      "claude",
+      "claude-code",
+      "codex",
+      "orchestrator",
+      "skills",
+      "skills-management"
+    ],
+    "html_url": "https://github.com/yintong-zhou/ark",
+    "homepage": "https://ark-agents.vercel.app",
+    "logo": "/project-logos/ark.ico",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "ilovestock",
+    "full_name": "yintong-zhou/ilovestock",
+    "description": "It combines fundamental analysis, to judge whether a company is worth owning, with technical analysis, to judge whether now is a moment of possible growth",
+    "language": "Python",
+    "topics": [
+      "claude-code",
+      "fundamental-analysis",
+      "investment",
+      "stock-analysis",
+      "stock-market",
+      "technical-analysis"
+    ],
+    "html_url": "https://github.com/yintong-zhou/ilovestock",
+    "homepage": "https://ilovestock.vercel.app",
+    "logo": "/project-logos/ilovestock.png",
     "fork": false,
     "archived": false
   },
@@ -109,25 +128,6 @@
     "html_url": "https://github.com/ICPN/subsmate",
     "homepage": "https://subsmate.vercel.app",
     "logo": "/project-logos/icpn--subsmate.png",
-    "fork": false,
-    "archived": false
-  },
-  {
-    "name": "ilovestock",
-    "full_name": "yintong-zhou/ilovestock",
-    "description": "It combines fundamental analysis, to judge whether a company is worth owning, with technical analysis, to judge whether now is a moment of possible growth",
-    "language": "Python",
-    "topics": [
-      "claude-code",
-      "fundamental-analysis",
-      "investment",
-      "stock-analysis",
-      "stock-market",
-      "technical-analysis"
-    ],
-    "html_url": "https://github.com/yintong-zhou/ilovestock",
-    "homepage": "",
-    "logo": "/project-logos/ilovestock.png",
     "fork": false,
     "archived": false
   },
