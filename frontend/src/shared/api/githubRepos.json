@@ -1,5 +1,32 @@
 [
   {
+    "name": "personal-portfolio",
+    "full_name": "yintong-zhou/personal-portfolio",
+    "description": "Personal portfolio",
+    "language": "TypeScript",
+    "topics": [
+      "claude",
+      "claude-code",
+      "claude-skills",
+      "cloudflare",
+      "cloudflare-workers",
+      "codex",
+      "codex-skill",
+      "oracle",
+      "personal-blog",
+      "personal-portfolio",
+      "personal-project",
+      "personal-site",
+      "personal-website",
+      "vercel"
+    ],
+    "html_url": "https://github.com/yintong-zhou/personal-portfolio",
+    "homepage": "https://personal-portfolio.jjservice.workers.dev/",
+    "logo": "/project-logos/personal-portfolio.png",
+    "fork": false,
+    "archived": false
+  },
+  {
     "name": "getstead",
     "full_name": "yintong-zhou/getstead",
     "description": "Stead - your money, steady",
@@ -64,33 +91,6 @@
     "html_url": "https://github.com/yintong-zhou/ilovestock",
     "homepage": "https://ilovestock.vercel.app",
     "logo": "/project-logos/ilovestock.png",
-    "fork": false,
-    "archived": false
-  },
-  {
-    "name": "personal-portfolio",
-    "full_name": "yintong-zhou/personal-portfolio",
-    "description": "Personal portfolio",
-    "language": "TypeScript",
-    "topics": [
-      "claude",
-      "claude-code",
-      "claude-skills",
-      "cloudflare",
-      "cloudflare-workers",
-      "codex",
-      "codex-skill",
-      "oracle",
-      "personal-blog",
-      "personal-portfolio",
-      "personal-project",
-      "personal-site",
-      "personal-website",
-      "vercel"
-    ],
-    "html_url": "https://github.com/yintong-zhou/personal-portfolio",
-    "homepage": "https://personal-portfolio.jjservice.workers.dev/",
-    "logo": "/project-logos/personal-portfolio.png",
     "fork": false,
     "archived": false
   },
